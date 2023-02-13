@@ -32,7 +32,6 @@ export default {
           hotspot: true,
         },
       },
-   
       {
         name: 'tags',
         title: 'Tags',
@@ -44,7 +43,6 @@ export default {
            type:'string'
          }
        ]
-      },
-     
+      }
     ],
   };
