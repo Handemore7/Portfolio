@@ -7,11 +7,15 @@ import { motion } from 'framer-motion'
 
 import { urlFor, client } from '../../client'
 
+import useWindowDimensions from '../../constants/dimensions';
+
 const Navbar = () => {
 
   const [toggle, setToggle] = useState(false)
 
   const [specificData, setSpecificData] = useState(null)
+
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     const query = '*[_type == "specificThings"]';
@@ -26,7 +30,10 @@ const Navbar = () => {
   return (
     <nav className='app__navbar'>
       <div className='app__navbar-logo'>
-        <img src={specificData ? urlFor(specificData[0].navBarLogo) : images.logo} alt="logo" />
+        {width >= 450 ? 
+        <img src={specificData ? urlFor(specificData[0].navBarLogo) : images.logo} alt="logo" /> :
+        <img src={images.logoTab} alt="logo" />  
+      }
       </div>
       <ul className='app__navbar-links'>
         {['Home','About','Work','Skills','Contact'].map((item) => (
